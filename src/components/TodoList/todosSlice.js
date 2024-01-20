@@ -36,13 +36,16 @@ export default createSlice({
     { id: 2, name: "Learn Redux", completed: true, priority: "High" },
     { id: 3, name: "Learn JavaScript", completed: false, priority: "Low" },
   ],
-  reducers: { //IMMER
+  reducers: {
+    //IMMER
     addTodo: (state, action) => {
       state.push(action.payload);
     }, // action creators // library đã cung cấp immer nên dùng mutation trực tiếp giống immutation gián tiếp
-    toggleTodoStatus: (state, action) => { // đã tự động tạo 1 actions creators
+    toggleTodoStatus: (state, action) => {
+      // đã tự động tạo 1 actions creators
       const currentTodo = state.find((todo) => todo.id === action.payload); //[{abc}]
-      if (currentTodo) { // dùng filter trả về 1 array. cần trả về object dùng find
+      if (currentTodo) {
+        // dùng filter trả về 1 array. cần trả về object dùng find
         currentTodo.completed = !currentTodo.completed;
       }
     },
